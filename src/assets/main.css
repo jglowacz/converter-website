@@ -8,19 +8,6 @@
   font-weight: normal;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
 @media (min-width: 1024px) {
   body {
     display: flex;
@@ -29,7 +16,20 @@ a,
 
   #app {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    place-items: center;
     padding: 0 2rem;
   }
+}
+
+.select-temp-container, .degrees-container {
+  font-size: x-small;
+  display: flex;
+  flex-direction: column;
+}
+
+input[type=number],select {
+  padding:10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  background: linear-gradient(120deg, #37215c, #602b75, #ae447f, #e6755e, #ffb56b);
 }

@@ -1,29 +1,31 @@
-<!-- Your UI should include the following elements:
-
-Text input for the user's URL
-"Shorten" button to trigger the link shortening
-Display area to return the shortened URL to the user -->
-
 <script setup>
 import { ref } from 'vue'
-function shortenURL(url) {
-
-}
+const temp = ref('')
 const selected = ref('')
 </script>
 
 <template>
   <div id="main">
-    <form>
-      <label for="degrees">Degrees:</label><br>
-      <input type="number" id="degrees" name="degrees-input">
-    </form>
-    <div>Selected: {{ selected }}</div>
-    <select v-model="selected">
-      <option value="" disabled>Please select one</option>
-      <option>Celsius</option>
-      <option>Fahrenheit</option>
-    </select>
+    <div class="degrees-container">
+      <label for="degrees">Degrees:</label>
+      <form>
+        <input v-model="temp" type="number">
+      </form>
+    </div>
+    <div class="select-temp-container">
+      <label for="select-temp">Type</label>
+      <select v-model="selected" id="select-temp">
+        <option disabled value="">Please select one</option>
+        <option>Celsius</option>
+        <option>Fahrenheit</option>
+      </select>
+    </div>
+    <div v-if="selected === 'Celsius'">{{ temp }}°{{ selected.slice(0, 1) }} is {{ Math.round(temp * 9 / 5 + 32) }}°F
+    </div>
+    <div v-else-if="selected === 'Fahrenheit'">{{ temp }}°{{ selected.slice(0, 1) }} is {{ Math.round(temp - 32 * 5 / 9
+      )
+    }}°C</div>
+    <div v-else></div>
   </div>
 </template>
 
